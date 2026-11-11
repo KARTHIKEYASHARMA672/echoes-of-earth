@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --bg: #020203;
+  --surface: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.1);
+  --foreground: #f4f7fa;
+  --muted: #9ea7b8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+  scroll-behavior: auto;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(0, 229, 255, 0.16), transparent 28rem),
+    radial-gradient(circle at 82% 10%, rgba(124, 108, 255, 0.18), transparent 30rem),
+    linear-gradient(180deg, #020203 0%, #050506 45%, #020203 100%);
+  color: var(--foreground);
+  font-family: var(--font-inter), Inter, sans-serif;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+::selection {
+  background: #f4f7fa;
+  color: #020203;
+}
+
+.glass-panel {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.01)),
+    rgba(10, 12, 16, 0.45);
+  box-shadow: 0 32px 96px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(32px) saturate(180%);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.02)),
+    rgba(10, 12, 16, 0.55);
+}
+
+.aurora {
+  background:
+    radial-gradient(circle at 10% 40%, rgba(0, 229, 255, 0.35), transparent 28rem),
+    radial-gradient(circle at 60% 15%, rgba(22, 163, 74, 0.25), transparent 22rem),
+    radial-gradient(circle at 80% 70%, rgba(255, 79, 216, 0.25), transparent 30rem);
+  filter: blur(34px);
+  animation: aurora-drift 14s ease-in-out infinite alternate;
+}
+
+.chapter-mask {
+  mask-image: linear-gradient(to bottom, transparent, black 9%, black 88%, transparent);
+}
+
+.noise {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+@keyframes aurora-drift {
+  from {
+    transform: translate3d(-2%, -1%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(3%, 2%, 0) scale(1.08);
+  }
+}
+
+@keyframes pulse-line {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scaleY(0.88);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}
